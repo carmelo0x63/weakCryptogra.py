@@ -27,15 +27,15 @@ def caesar(txt, key, mode = 0):
 #            print(f'letter: {letter}\t index: {letterIndex}')
 
             if mode:
-                newIndex = letterIndex - key  # if 'mode' is set the request is to decrypt, that is to shift left, hence the "-"
+                newIndex = letterIndex - key  # if 'mode' is set the request is to decrypt, that is to shift the symbols left, hence the "-"
             else:
-                newIndex = letterIndex + key  # if 'mode' is NOT set (default value) the request is to decrypt, letters are shifted right, hence the "+"
+                newIndex = letterIndex + key  # if 'mode' is NOT set (default value) the request is to encrypt, letters are shifted right, hence the "+"
 
             # Out of margins/wrap-around is handled here with some modulo-like logic
             if newIndex >= len(SYMBOLS):
                 newIndex -= len(SYMBOLS)
             elif newIndex < 0:
-                newIndex -= len(SYMBOLS)
+                newIndex += len(SYMBOLS)
 
             xtx += SYMBOLS[newIndex]
         else:
