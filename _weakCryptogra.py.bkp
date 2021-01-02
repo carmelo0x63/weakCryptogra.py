@@ -1,27 +1,27 @@
-def reverse(clearTxt):
+def reverse(txt):
     """
     The reverse cipher encrypts a message by printing it in reverse order. So 'Hello, world!' encrypts to '!dlrow ,olleH'.
     To decrypt, or get the original message, you simply reverse the encrypted message. The encryption and decryption steps are the same.
     """    
 
-    cipherTxt = ''  # 'cipherTxt' will contain the reversed string
+    xtx = ''  # 'xtx' will contain the reversed string
 
-    for idx in range(len(clearTxt), 0, -1):
-        cipherTxt += clearTxt[idx - 1]
+    for idx in range(len(txt), 0, -1):
+        xtx += txt[idx - 1]
 
-    return cipherTxt
+    return xtx
 
-def caesar(clearTxt, key, mode = 0):
+def caesar(txt, key, mode = 0):
     """
-    The Caesar cipher works by substituting each letter of a message 'clearTxt' with a new letter after shifting the alphabet over by 'key' positions. For example (e.g. key = 3), every A in the message would be replaced by a D, every B would be an E, and so on.
+    The Caesar cipher works by substituting each letter of a message 'txt' with a new letter after shifting the alphabet over by 'key' positions. For example (e.g. key = 3), every A in the message would be replaced by a D, every B would be an E, and so on.
     When a letter at the end of the alphabet must be shifted, such as Y, it must be wrapped around to the beginning of the alphabet and shifted three places to B.
     'mode' takes two different values: 0 (default) = encrypt, 1 = decrypt.
     """
 
     SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'  # len(SYMBOLS) = 93
-    cipherTxt = ''  # Output string
+    xtx = ''  # Output string
 
-    for letter in clearTxt:
+    for letter in txt:
         if letter in SYMBOLS:
             letterIndex = SYMBOLS.find(letter)
 #            print(f'letter: {letter}\t index: {letterIndex}')
@@ -37,13 +37,13 @@ def caesar(clearTxt, key, mode = 0):
             elif newIndex < 0:
                 newIndex += len(SYMBOLS)
 
-            cipherTxt += SYMBOLS[newIndex]
+            xtx += SYMBOLS[newIndex]
         else:
-            cipherTxt += letter
+            xtx += letter
 
-    return cipherTxt
+    return xtx
 
-def columnar(message, key, mode = 0):
+def columnar(txt, key, mode = 0):
     """
     The transposition cipher rearranges the message’s symbols into an order that makes the original message unreadable. Each key creates a different ordering, or permutation, of the characters.
     """
@@ -51,30 +51,30 @@ def columnar(message, key, mode = 0):
     import math
 
     if mode:
-        numOfColumns = math.ceil(len(message) / key)
+        numOfColumns = math.ceil(len(txt) / key)
         numOfRows = key
-        numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
-        clearTxt = [''] * numOfColumns
+        numOfShadedBoxes = (numOfColumns * numOfRows) - len(txt)
+        plaintext = [''] * numOfColumns
         column = 0
         row = 0
-        for symbol in message:
-            clearTxt[column] += symbol
+        for symbol in txt:
+            plaintext[column] += symbol
             column += 1
             if (column == numOfColumns) or (column == numOfColumns - 1 and row >= numOfRows - numOfShadedBoxes):
                 column = 0
                 row += 1
-        return ''.join(clearTxt)
+        return ''.join(plaintext)
 
     else:
         width = key
-        cipherTxt = ''  # Output string
+        xtx = ''  # Output string
         for column in range(key):
             index = 0
-            while index <= len(message):
+            while index <= len(txt):
                 try:
-                    cipherTxt += message[column + index]
+                    xtx += txt[column + index]
                 except IndexError:
-                    cipherTxt += ''
+                    xtx += ''
                 index += width
-        return cipherTxt
+        return xtx
 
