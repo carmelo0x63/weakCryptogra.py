@@ -10,6 +10,7 @@ The code has been entirely rewritten but it's heavily inspired by Al Sweigart's 
 Use them to try and learn as you please. **Never** use them for any serious, real-life applications!
 
 ### Usage
+```
 >>> import weakCryptogra
 
 >>> weakCryptogra.reverse('Hello, world!')
@@ -17,4 +18,8 @@ Use them to try and learn as you please. **Never** use them for any serious, rea
 
 >>> weakCryptogra.caesar('Hello, world!', 17)
 'YvCCF{ NFICu='
+
+>>> weakCryptogra.columnar('Hello, world!', 3)
+'Hl r!eowll,od'
+```
 

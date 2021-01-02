@@ -43,3 +43,38 @@ def caesar(txt, key, mode = 0):
 
     return xtx
 
+def columnar(txt, key, mode = 0):
+    """
+    The transposition cipher rearranges the message’s symbols into an order that makes the original message unreadable. Each key creates a different ordering, or permutation, of the characters.
+    """
+
+    import math
+
+    if mode:
+        numOfColumns = math.ceil(len(txt) / key)
+        numOfRows = key
+        numOfShadedBoxes = (numOfColumns * numOfRows) - len(txt)
+        plaintext = [''] * numOfColumns
+        column = 0
+        row = 0
+        for symbol in txt:
+            plaintext[column] += symbol
+            column += 1
+            if (column == numOfColumns) or (column == numOfColumns - 1 and row >= numOfRows - numOfShadedBoxes):
+                column = 0
+                row += 1
+        return ''.join(plaintext)
+
+    else:
+        width = key
+        xtx = ''  # Output string
+        for column in range(key):
+            index = 0
+            while index <= len(txt):
+                try:
+                    xtx += txt[column + index]
+                except IndexError:
+                    xtx += ''
+                index += width
+        return xtx
+
