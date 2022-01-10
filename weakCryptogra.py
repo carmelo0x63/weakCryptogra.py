@@ -1,3 +1,35 @@
+#!/usr/bin/env python3
+# Set of functions for WEAK Cryptography
+# author: Carmelo C
+# email: carmelo.califano@gmail.com
+# history, date format ISO 8601:
+#  2022-01-10 Added substitution cipher
+
+def substitution(message, key, mode = 0):
+    """
+    The substitution cipher is a method of encrypting in which units of plaintext are replaced with the ciphertext, in a defined manner, with the help of a key.
+    The receiver deciphers the text by performing the inverse substitution process to extract the original message.
+    """
+
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    output = ''
+
+    if mode:
+        for char in message:
+            try:
+                output += key[alphabet.index(char)]
+            except ValueError:
+                output += char
+    else:
+        for char in message:
+            try:
+                output += alphabet[key.index(char)]
+            except ValueError:
+                output += char
+
+    return output
+
+
 def reverse(clearTxt):
     """
     The reverse cipher encrypts a message by printing it in reverse order. So 'Hello, world!' encrypts to '!dlrow ,olleH'.
@@ -10,6 +42,7 @@ def reverse(clearTxt):
         cipherTxt += clearTxt[idx - 1]
 
     return cipherTxt
+
 
 def caesar(clearTxt, key, mode = 0):
     """
@@ -42,6 +75,7 @@ def caesar(clearTxt, key, mode = 0):
             cipherTxt += letter
 
     return cipherTxt
+
 
 def columnar(message, key, mode = 0):
     """

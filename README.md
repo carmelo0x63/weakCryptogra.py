@@ -22,5 +22,16 @@ Use them to try and learn as you please. **Never** use them for any serious, rea
 
 >>> weakCryptogra.columnar('Hello, world!', 3)
 'Hl r!eowll,od'
+
+>>> import random
+>>> alphabet = 'abcdefghijklmnopqrstuvwxyz'
+>>> key = list(alphabet)
+>>> random.shuffle(key)
+>>> key
+['d', 'q', 'u', 't', 'n', 'w', 'g', 'k', 'm', 'o', 'c', 'f', 'y', 's', 'x', 'p', 'j', 'e', 'b', 'z', 'r', 'a', 'v', 'l', 'h', 'i']
+>>> weakCryptogra.substitution('Hello!', key)
+'Hrxxj!'
+>>> weakCryptogra.substitution('Hrxxj!', key, 1)
+'Hello!'
 ```
 
