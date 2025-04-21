@@ -13,13 +13,32 @@ Use them to try and learn as you please. **Never** use them for any serious, rea
 ### Usage
 ```
 >>> import weakCryptogra
+```
 
+#### Reverse cipher
+```
 >>> weakCryptogra.reverse('Hello, world!')
 '!dlrow ,olleH'
+```
 
+#### Ceeasar cipher
+```
 >>> weakCryptogra.caesar('Hello, world!', 17)
-'YvCCF{ NFICu='
+'YvCCF, NFICu!'
+```
 
+#### Caesar cipher: xample of brute-force decryption
+```
+for INDEX in range(1,27):
+    print(f"{INDEX}: ", end = "")
+    print(weakCryptogra.caesar('YvCCF, NFICu!', INDEX, mode = 1))
+...
+17: Hello, world!
+...
+```
+
+#### Other examples
+```
 >>> weakCryptogra.columnar('Hello, world!', 3)
 'Hl r!eowll,od'
 

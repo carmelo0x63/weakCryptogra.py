@@ -3,12 +3,14 @@
 # author: Carmelo C
 # email: carmelo.califano@gmail.com
 # history, date format ISO 8601:
+#  2025-04-21 Small edits
 #  2022-01-10 Added substitution cipher
 
 def substitution(message, key, mode = 0):
     """
     The substitution cipher is a method of encrypting in which units of plaintext are replaced with the ciphertext, in a defined manner, with the help of a key.
     The receiver deciphers the text by performing the inverse substitution process to extract the original message.
+    'mode' takes two different values: 0 (default) = encrypt, 1 = decrypt.
     """
 
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -46,12 +48,14 @@ def reverse(clearTxt):
 
 def caesar(clearTxt, key, mode = 0):
     """
-    The Caesar cipher works by substituting each letter of a message 'clearTxt' with a new letter after shifting the alphabet over by 'key' positions. For example (e.g. key = 3), every A in the message would be replaced by a D, every B would be an E, and so on.
+    The Caesar cipher works by substituting each letter of a message 'clearTxt' with a new letter after shifting the alphabet over by 'key' positions.
+    For example (e.g. key = 3), every A in the message would be replaced by a D, every B would be an E, and so on.
     When a letter at the end of the alphabet must be shifted, such as Y, it must be wrapped around to the beginning of the alphabet and shifted three places to B.
     'mode' takes two different values: 0 (default) = encrypt, 1 = decrypt.
     """
 
-    SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'  # len(SYMBOLS) = 93
+#    SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'  # len(SYMBOLS) = 93
+    SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'  # len(SYMBOLS) = 52
     cipherTxt = ''  # Output string
 
     for letter in clearTxt:
