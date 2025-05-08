@@ -3,6 +3,7 @@
 # author: Carmelo C
 # email: carmelo.califano@gmail.com
 # history, date format ISO 8601:
+#  2025-04-23 Caesar cipher, small letters only
 #  2025-04-21 Small edits
 #  2022-01-10 Added substitution cipher
 
@@ -54,14 +55,13 @@ def caesar(clearTxt, key, mode = 0):
     'mode' takes two different values: 0 (default) = encrypt, 1 = decrypt.
     """
 
-#    SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'  # len(SYMBOLS) = 93
-    SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'  # len(SYMBOLS) = 52
+    SYMBOLS = 'abcdefghijklmnopqrstuvwxyz'  # len(SYMBOLS) = 26
     cipherTxt = ''  # Output string
 
     for letter in clearTxt:
+        letter = letter.lower()
         if letter in SYMBOLS:
             letterIndex = SYMBOLS.find(letter)
-#            print(f'letter: {letter}\t index: {letterIndex}')
 
             if mode:
                 newIndex = letterIndex - key  # if 'mode' is set the request is to decrypt, that is to shift the symbols left, hence the "-"
